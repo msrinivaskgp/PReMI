@@ -59,15 +59,11 @@ acc2,arg_dt1 = RF_Func.dtv_predict(dt, winetest)
 acc_3,arg_1, and_1, or_1,count_s1,count_d1,count_c1,time1,path_counts1, path_lengths1,node_counts1 = \
     profile_function(bds_Func.predict_bds, dt, bf, winetest)
 
-acc_4,arg_2, and_2, or_2,count_s2,count_d2,count_c2,time2,path_counts2, path_lengths2, node_counts2 = \
-    profile_function(bds_Func.predict_obds, dt, mt, winetest)
-
 acc_5,arg_3, and_3, or_3,count_s3,count_d3,count_c3,time3,path_counts3, path_lengths3, node_counts3 = \
-    profile_function(bds_Func.predict_eobds, dt, mt, winetest)
-
+    profile_function(bds_Func.predict_eobds, dt, bf, winetest)
 
 #acc4,arg1,and2, or2 = obds_Func.predict(dt, mt, winetest)
-acc5,class_f, class_fm, and2, and3, or2, or3,size2,size3,depth2,depth3,card2,card3 = eobds_fun.predict(dt, mt, winetest)
+acc5,class_f, class_fm, and2, and3, or2, or3,size2,size3,depth2,depth3,card2,card3 = eobds_fun.predict(dt, bf, winetest)
 
 #print(and1-and2,and2-and3,or1-or2,or2-or3)
 #print(len(class1_fm),len(class2_fm),len(class3_fm))
@@ -137,4 +133,4 @@ import csv
 file_path = '/home/srinivas/Documents/CTRF-main/CTRF-main/CTRF/CTRF/CTRF/Output/file.csv'  # Replace this with the actual path to your CSV file
 with open(file_path, 'a', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
-    csv_writer.writerow([acc1,acc2,acc_3,acc_4,acc_5,sum(hist_node)-sum(hist_leaf),sum(var1)-sum(var2),and_1,or_1,and_2,or_2,and_3,or_3,count_s1,count_d1,count_c1,count_s2,count_d2,count_c2,count_s3,count_d3,count_c3,time1,time2,time3,path_counts1, path_lengths1,path_counts2, path_lengths2,path_counts3, path_lengths3,node_counts1,node_counts2,node_counts3])
+    csv_writer.writerow([acc1,acc2,acc_3,acc_5,sum(hist_node)-sum(hist_leaf),sum(var1)-sum(var2),and_1,or_1,and_3,or_3,count_s1,count_d1,count_c1,count_s3,count_d3,count_c3,time1,time3,path_counts1, path_lengths1,path_counts3, path_lengths3,node_counts1,node_counts3])

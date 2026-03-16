@@ -9,11 +9,11 @@ Usage in any module:
 """
 
 # Number of terms per tree (default for CTRFT)
-Terms = 40
+Terms = 8
 # Number of trees in the forest
-trees = 400
+trees = 100
 # Number of target classes in your dataset
-n_class = 10
+n_class = 2
 
 # === Optional future additions ===
 # max_depth = 10

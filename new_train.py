@@ -15,18 +15,15 @@ from pyeda.inter import *
 from pyeda.boolalg.expr import exprvar
 from typing import List, Any
 
-from new_gmm import GmmMml
 from new_MintermCal import *
 from new_basic_functions import *
 from new_IG_func import *
 from Evaluate_boolean import *
-from obds_func import *
 from config import Terms, trees, n_class
-#from gmm_mml import GmmMml
 
 k = 5
 skf = StratifiedKFold(n_splits=k, shuffle=True)
-df = pandas.read_csv('/home/srinivas/Documents/PReMI/data/L10_pn.csv')
+df = pandas.read_csv('/home/srinivas/Documents/PReMI/data/bank.csv')
 list_df = df.values.tolist()
 pima = np.asarray(list_df)
 [P, Q] = pima.shape
@@ -34,7 +31,7 @@ target = pima[:, -1]
 pfeatures = pima[:, 0:Q - 1]
 times = 1
 
-output_paths = [f'/home/srinivas/Documents/PReMI/data/Output/{{}}{i + 1}.pickle' for i in range(5)]
+output_paths = [f'/home/srinivas/Documents/PReMI/Output/{{}}{i + 1}.pickle' for i in range(5)]
 
 for f in range(times):
     k_count = 0
@@ -93,24 +90,3 @@ for fold in range(5):
     with open(output_paths[fold].format('bf'), 'wb') as file:
         pickle.dump(bf, file)
 
-    var_ob = 0
-    remove_f, remove_v = [], []
-
-    while True:
-        mt = obdt4(dt, bf, pfeatures)
-        bf, cut_tree, remove_f, remove_v = obdt5(mt, 1, Terms, remove_f, remove_v)
-        unique_list_tree = list(set(remove_consecutive_duplicates(cut_tree)))
-        var_ob += len(unique_list_tree)
-        if not unique_list_tree:
-            break
-
-    with open(output_paths[fold].format('eo'), 'wb') as file:
-        pickle.dump(mt, file)
-
-    globals()[f'remove_f{fold + 1}'] = remove_f
-    globals()[f'remove_v{fold + 1}'] = remove_v
-    globals()[f'var_ob{fold + 1}'] = var_ob
-
-print(*(len(globals()[f'remove_f{i + 1}']) for i in range(5)))
-for i in range(5):
-    print(basic_functions.count_unique_elements(globals()[f'remove_f{i + 1}']))
