@@ -191,12 +191,12 @@ The EBDS framework can support research in:
 
 ## Author
 
-Maddimsetti Srinivas
-PhD Researcher
-Indian Institute of Technology Kharagpur
+Maddimsetti Srinivas,
+PhD Researcher,
+Indian Institute of Technology Kharagpur.
 
-Debdoot Sheet
-Associate Professor
-Indian Institute of Technology Kharagpur
+Debdoot Sheet,
+Associate Professor,
+Indian Institute of Technology Kharagpur.
 
 ---
